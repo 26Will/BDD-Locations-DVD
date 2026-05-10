@@ -1,0 +1,30 @@
+Sub trie()
+'
+' trieMacro
+'
+    Dim N As Long
+    
+    ' Demande du nombre à l'utilisateur
+    N = Application.InputBox("Entrez le nombre N à filtrer :", _
+                             "Filtre dynamique", Type:=1)
+    
+    ' Si l'utilisateur annule ou entre une valeur <= 0, on sort
+    If N <= 0 Then Exit Sub
+    
+    ' Application du filtre
+    ActiveSheet.ListObjects("Tableau15").Range.AutoFilter _
+        Field:=1, Criteria1:="<" & N + 1, Operator:=xlAnd
+    
+    ActiveWindow.SmallScroll Down:=-12
+End Sub
+
+
+Sub detrie()
+'
+' detrie Macro
+'
+
+'
+    Range("Tableau15[[#Headers],[Numéro]]").Select
+    ActiveSheet.ShowAllData
+End Sub
